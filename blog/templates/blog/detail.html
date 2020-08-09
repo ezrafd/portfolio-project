@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.1.1">
-  <title>Ezra Ford</title>
+  <title>{{ blog.title }}</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
@@ -47,44 +47,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="nav-link active" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="https://github.com/ezrafd">GitHub</a>
           <a class="nav-link" href="https://www.linkedin.com/in/ezra-ford/">LinkedIn</a>
           <a class="nav-link" href="https://www.instagram.com/ezra.fd/">Instagram</a>
           <a class="nav-link" href="http://twitter.com/ezrafd">Twitter</a>
-          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
-          <a class="nav-link" href="{% static 'resume.pdf' %}">Resume</a>
+          <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
         </div>
       </div>
     </nav>
   </header>
   <main role="main">
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1>Hi, I'm Ezra</h1>
-        <p class="lead text-muted">I'm a student at Garfield High School and I work at the best pizza place around, Pagliacci Pizza.</p>
-        <p>
-          <a href="mailto:ezraford44@gmail.com" class="btn btn-primary my-2">Email Me</a>
-        </p>
-      </div>
-    </section>
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row">
+    <div class='container'>
+        <h1 class = 'pt-5'>{{ blog.title }}</h1>
+        <p>{{ blog.pub_date }}</p>
+        <br>
+        <img src="{{ blog.image.url }}" width="300" />
+        <br>
+        <br>
+        <p class="card-text">{{ blog.text }}</p>
 
-        {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class='card-img-top' src="{{ job.image.url }}"/>
-              <div class="card-body">
-                <p class="card-text">{{ job.summary }}</p>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
 
-        </div>
-      </div>
+
     </div>
   </main>
   <footer class="text-muted">
